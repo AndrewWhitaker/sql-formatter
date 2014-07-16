@@ -427,7 +427,7 @@
                     return new Token(TokenType.ReservedTopLevel, match.Groups[1].Value);
                 }
 
-                match = Newline.Match(str);
+                match = Newline.Match(upper);
 
                 if (match.Success)
                 {
