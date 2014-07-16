@@ -1,0 +1,1 @@
+A very basic SQL formatter. All credit goes to [https://github.com/jdorn/sql-formatter](jdorn's sql-formatter project)
