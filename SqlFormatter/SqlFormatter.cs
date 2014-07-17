@@ -340,6 +340,44 @@
             return tokens;
         }
 
+        public static IEnumerable<string> SplitQuery(string str)
+        {
+            var tokens = Tokenize(str);
+            var queries = new List<string>();
+
+            string currentQuery = string.Empty;
+            bool empty = true;
+
+            foreach (Token token in tokens)
+            {
+                if (token.Value == ";")
+                {
+                    if (!empty)
+                    {
+                        queries.Add(currentQuery + ";");
+                    }
+                    currentQuery = string.Empty;
+                    empty = true;
+                }
+                else
+                {
+                    if (token.Type != TokenType.Whitespace && token.Type != TokenType.Comment && token.Type != TokenType.BlockComment)
+                    {
+                        empty = false;
+                    }
+                    currentQuery += token.Value;
+                }
+
+            }
+
+            if (!empty)
+            {
+                queries.Add(currentQuery.Trim());
+            }
+
+            return queries;
+        }
+
         private static Token GetNextToken(string str, Token previous = null)
         {
             Match match = Whitespace.Match(str);
