@@ -229,7 +229,7 @@
                     }
                     else
                     {
-                        result = result.TrimEnd() + new string(Tab, indentLevel);
+                        result = result.TrimEnd('\t') + new string(Tab, indentLevel);
                     }
 
                     if (!token.Value.Contains(' ') || !token.Value.Contains('\n') || !token.Value.Contains(Tab))
