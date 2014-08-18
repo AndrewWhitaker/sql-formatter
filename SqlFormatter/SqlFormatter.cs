@@ -304,7 +304,7 @@
                 }
             }
 
-            return result;
+            return result.Trim();
         }
 
         public static List<Token> Tokenize(string str)
